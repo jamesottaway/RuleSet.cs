@@ -1,0 +1,2 @@
+#!/bin/sh
+exec "$MONO_HOME/bin/mono" $MONO_OPTIONS "$MONO_HOME/lib/mono/4.5/nunit-console.exe" "$@"
