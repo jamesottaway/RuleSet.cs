@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+      <id>RuleSet</id>
+      <version>0.0.1</version>
+      <title>RuleSet</title>
+      <authors>James Ottaway</authors>
+      <owners>James Ottaway</owners>
+      <licenseUrl>https://github.com/jamesottaway/RuleSet.cs/blob/master/LICENSE.md</licenseUrl>
+      <projectUrl>https://github.com/jamesottaway/RuleSet.cs</projectUrl>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <description>
+        There are few things more rage-inducing than encountering huge chunks of conditional logic, which are often responsible for hugely important components of a given piece of software.
+        Rather than tightly coupling the given piece of logic with an explicit conditional flow, we can instead define the logic independently of any specific code, allowing for a much more flexible approach.
+      </description>
+      <summary>Simplify hideous conditional blocks with declarative logic</summary>
+      <copyright>Copyright 2014</copyright>
+  </metadata>
+  <files>
+    <file src="bin/Release/*.dll" target="lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+  </files>
+</package>

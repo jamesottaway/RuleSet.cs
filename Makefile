@@ -2,6 +2,7 @@ SOLUTION = RuleSet.sln
 MAIN_PROJECT = RuleSet
 TEST_PROJECT = RuleSet.Tests
 CONFIGURATIONS = Debug Release
+VERSION = 0.0.1
 
 .PHONY: all
 all: clean build test
@@ -21,3 +22,11 @@ build:
 .PHONY: test
 test: build
 	./tools/nunit $(TEST_PROJECT)/bin/Debug/$(TEST_PROJECT).dll
+
+.PHONY: nupkg
+nupkg: build test
+	./tools/nuget pack $(MAIN_PROJECT)/$(MAIN_PROJECT).nuspec
+
+.PHONY: release
+release: nupkg
+	./tools/nuget push $(MAIN_PROJECT).$(VERSION).nupkg
