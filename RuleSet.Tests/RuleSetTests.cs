@@ -115,5 +115,56 @@ namespace RuleSet.Tests
 			Assert.That(results, Contains.Item("definitely equal"));
 		}
 	}
+
+	[TestFixture]
+	public class RuleSetTestsWithThreeGenericInputTypes
+	{
+		private Func<int, int, int, bool> asc;
+		private Func<int, int, int, bool> desc;
+
+		[SetUp]
+		public void SetUp()
+		{
+			asc = (a, b, c) => c > b && b > a;
+			desc = (a, b, c) => a > b && b > c;
+		}
+
+		[Test]
+		public void TestFirstReturnsFirstResultWhereTheConditionIsMet()
+		{
+			var ruleSet = new RuleSet<int, int, int, string>();
+
+			ruleSet.When(asc).Then("ascending");
+			ruleSet.When(asc).Then("definitely ascending");
+
+			Assert.That(ruleSet.First(1,2,3), Is.EqualTo("ascending"));
+		}
+
+		[Test]
+		public void TestFirstReturnsDefaultResultWhereNoConditionIsMet()
+		{
+			var ruleSet = new RuleSet<int, int, int, string>("default");
+
+			ruleSet.When(asc).Then("ascending");
+
+			Assert.That(ruleSet.First(5,5,5), Is.EqualTo("default"));
+		}
+
+		[Test]
+		public void TestAllReturnsAllResultsWhereTheConditionIsMet()
+		{
+			var ruleSet = new RuleSet<int, int, int, string>();
+
+			ruleSet.When(desc).Then("descending");
+			ruleSet.When(asc).Then("ascending");
+			ruleSet.When(asc).Then("definitely ascending");
+
+			var results = ruleSet.All(1,2,3);
+
+			Assert.That(results.Count(), Is.EqualTo(2));
+			Assert.That(results, Contains.Item("ascending"));
+			Assert.That(results, Contains.Item("definitely ascending"));
+		}
+	}
 }
 

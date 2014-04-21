@@ -87,5 +87,47 @@ namespace RuleSet
 			rules.Add(rule);
 		}
 	}
+
+	public class RuleSet<T1,T2,T3,TResult>
+	{
+		internal readonly IList<Rule<T1, T2, T3, TResult>> rules;
+		internal readonly TResult defaultResult;
+
+		public RuleSet(TResult defaultResult = default(TResult)) : base()
+		{
+			this.rules = new List<Rule<T1, T2, T3, TResult>>();
+			this.defaultResult = defaultResult;
+		}
+
+		public When<RuleSet<T1,T2,T3,TResult>,T1,T2,T3,TResult> When(Func<T1,T2,T3,bool> condition)
+		{
+			var when = new When<RuleSet<T1,T2,T3,TResult>,T1,T2,T3,TResult>(this, condition);
+			return when;
+		}
+
+		public When<RuleSet<T1,T2,T3,TResult>,T1,T2,T3,TResult> When(T1 t1, T2 t2, T3 t3)
+		{
+			Func<T1,T2,T3,bool> condition = (a,b,c) => a.Equals(t1) && b.Equals(t2) && c.Equals(t3);
+			var when = new When<RuleSet<T1,T2,T3,TResult>,T1,T2,T3,TResult>(this, condition);
+			return when;
+		}
+
+		public IEnumerable<TResult> All(T1 t1, T2 t2, T3 t3)
+		{
+			return rules.Where(r => r.Condition(t1, t2, t3)).Select(r => r.Result);
+		}
+
+		public TResult First(T1 t1, T2 t2, T3 t3)
+		{
+			var rule = rules.FirstOrDefault(r => r.Condition(t1, t2, t3));
+			return rule != null ? rule.Result : defaultResult;
+		}
+
+		internal void Add(Func<T1,T2,T3,bool> condition, TResult result)
+		{
+			var rule = new Rule<T1,T2,T3,TResult>(condition, result);
+			rules.Add(rule);
+		}
+	}
 }
 
