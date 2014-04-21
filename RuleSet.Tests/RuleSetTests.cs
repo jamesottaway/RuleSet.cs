@@ -64,5 +64,56 @@ namespace RuleSet.Tests
 			Assert.That(ruleSet.First(1), Is.EqualTo("one"));
 		}
 	}
+
+	[TestFixture]
+	public class RuleSetTestsWithTwoGenericInputTypes
+	{
+		private Func<object, object, bool> equal;
+		private Func<object, object, bool> notEqual;
+
+		[SetUp]
+		public void SetUp()
+		{
+			equal = (a, b) => a == b;
+			notEqual = (a, b) => a != b;
+		}
+
+		[Test]
+		public void TestFirstReturnsFirstResultWhereTheConditionIsMet()
+		{
+			var ruleSet = new RuleSet<object, object, string>();
+
+			ruleSet.When(equal).Then("equal");
+			ruleSet.When(equal).Then("definitely equal");
+
+			Assert.That(ruleSet.First("foo", "foo"), Is.EqualTo("equal"));
+		}
+
+		[Test]
+		public void TestFirstReturnsDefaultResultWhereNoConditionIsMet()
+		{
+			var ruleSet = new RuleSet<object, object, string>("default");
+
+			ruleSet.When(equal).Then("equal");
+
+			Assert.That(ruleSet.First("foo", "bar"), Is.EqualTo("default"));
+		}
+
+		[Test]
+		public void TestAllReturnsAllResultsWhereTheConditionIsMet()
+		{
+			var ruleSet = new RuleSet<object, object, string>();
+
+			ruleSet.When(notEqual).Then("not equal");
+			ruleSet.When(equal).Then("equal");
+			ruleSet.When(equal).Then("definitely equal");
+
+			var results = ruleSet.All("foo", "foo");
+
+			Assert.That(results.Count(), Is.EqualTo(2));
+			Assert.That(results, Contains.Item("equal"));
+			Assert.That(results, Contains.Item("definitely equal"));
+		}
+	}
 }
 
