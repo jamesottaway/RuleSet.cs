@@ -2,7 +2,7 @@ SOLUTION = RuleSet.sln
 MAIN_PROJECT = RuleSet
 TEST_PROJECT = RuleSet.Tests
 CONFIGURATIONS = Debug Release
-VERSION = 0.0.1
+VERSION = 0.0.2
 
 .PHONY: all
 all: clean build test
