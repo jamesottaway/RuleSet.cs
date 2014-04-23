@@ -297,5 +297,47 @@ namespace RuleSet
             rules.Add(rule);
         }
     }
+
+    public class RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,TResult>
+    {
+        internal readonly IList<Rule<T1, T2, T3, T4, T5, T6, T7, T8, TResult>> rules;
+        internal readonly TResult defaultResult;
+
+        public RuleSet(TResult defaultResult = default(TResult)) : base()
+        {
+            this.rules = new List<Rule<T1, T2, T3, T4, T5, T6, T7, T8, TResult>>();
+            this.defaultResult = defaultResult;
+        }
+
+        public When<RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,TResult>,T1,T2,T3,T4,T5,T6,T7,T8,TResult> When(Func<T1,T2,T3,T4,T5,T6,T7,T8,bool> condition)
+        {
+            var when = new When<RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,TResult>,T1,T2,T3,T4,T5,T6,T7,T8,TResult>(this, condition);
+            return when;
+        }
+
+        public When<RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,TResult>,T1,T2,T3,T4,T5,T6,T7,T8,TResult> When(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8)
+        {
+            Func<T1,T2,T3,T4,T5,T6,T7,T8,bool> condition = (a, b, c, d, e, f, g, h) => a.Equals(t1) && b.Equals(t2) && c.Equals(t3) && d.Equals(t4) && e.Equals(t5) && f.Equals(t6) && g.Equals(t7) && h.Equals(t8);
+            var when = new When<RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,TResult>,T1,T2,T3,T4,T5,T6,T7,T8,TResult>(this, condition);
+            return when;
+        }
+
+        public IEnumerable<TResult> All(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8)
+        {
+            return rules.Where(r => r.Condition(t1, t2, t3, t4, t5, t6, t7, t8)).Select(r => r.Result);
+        }
+
+        public TResult First(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8)
+        {
+            var rule = rules.FirstOrDefault(r => r.Condition(t1, t2, t3, t4, t5, t6, t7, t8));
+            return rule != null ? rule.Result : defaultResult;
+        }
+
+        internal void Add(Func<T1,T2,T3,T4,T5,T6,T7,T8,bool> condition, TResult result)
+        {
+            var rule = new Rule<T1,T2,T3,T4,T5,T6,T7,T8,TResult>(condition, result);
+            rules.Add(rule);
+        }
+    }
 }
 
