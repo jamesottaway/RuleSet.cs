@@ -97,5 +97,17 @@ namespace RuleSet
             this.Result = result;
         }
     }
+
+    public class Rule<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult>
+    {
+        public Func<T1,T2,T3,T4,T5,T6,T7,T8,T9,bool> Condition { get; set; }
+        public TResult Result { get; set; }
+
+        public Rule(Func<T1,T2,T3,T4,T5,T6,T7,T8,T9,bool> condition, TResult result)
+        {
+            this.Condition = condition;
+            this.Result = result;
+        }
+    }
 }
 
