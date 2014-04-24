@@ -74,6 +74,16 @@ namespace RuleSet
 			return rule != null ? rule.Result : defaultResult;
 		}
 
+		public IEnumerable<TResult> All(params object[] args)
+		{
+			return All(args[0], args[1]);
+		}
+
+		public TResult First(params object[] args)
+		{
+			return First(args[0], args[1]);
+		}
+
 		internal void Add(Func<T1,T2,bool> condition, TResult result)
 		{
 			var rule = new Rule<T1,T2,TResult>(condition, result);
@@ -107,6 +117,16 @@ namespace RuleSet
 		{
 			var rule = rules.FirstOrDefault(r => r.Condition(t1, t2, t3));
 			return rule != null ? rule.Result : defaultResult;
+		}
+
+		public IEnumerable<TResult> All(params object[] args)
+		{
+			return All(args[0], args[1], args[2]);
+		}
+
+		public TResult First(params object[] args)
+		{
+			return First(args[0], args[1], args[2]);
 		}
 
 		internal void Add(Func<T1,T2,T3,bool> condition, TResult result)
@@ -144,6 +164,16 @@ namespace RuleSet
 			return rule != null ? rule.Result : defaultResult;
 		}
 
+		public IEnumerable<TResult> All(params object[] args)
+		{
+			return All(args[0], args[1], args[2], args[3]);
+		}
+
+		public TResult First(params object[] args)
+		{
+			return First(args[0], args[1], args[2], args[3]);
+		}
+
 		internal void Add(Func<T1,T2,T3,T4,bool> condition, TResult result)
 		{
 			var rule = new Rule<T1,T2,T3,T4,TResult>(condition, result);
@@ -177,6 +207,16 @@ namespace RuleSet
 		{
 			var rule = rules.FirstOrDefault(r => r.Condition(t1, t2, t3, t4, t5));
 			return rule != null ? rule.Result : defaultResult;
+		}
+
+		public IEnumerable<TResult> All(params object[] args)
+		{
+			return All(args[0], args[1], args[2], args[3], args[4]);
+		}
+
+		public TResult First(params object[] args)
+		{
+			return First(args[0], args[1], args[2], args[3], args[4]);
 		}
 
 		internal void Add(Func<T1,T2,T3,T4,T5,bool> condition, TResult result)
@@ -214,6 +254,16 @@ namespace RuleSet
 			return rule != null ? rule.Result : defaultResult;
 		}
 
+		public IEnumerable<TResult> All(params object[] args)
+		{
+			return All(args[0], args[1], args[2], args[3], args[4], args[5]);
+		}
+
+		public TResult First(params object[] args)
+		{
+			return First(args[0], args[1], args[2], args[3], args[4], args[5]);
+		}
+
 		internal void Add(Func<T1,T2,T3,T4,T5,T6,bool> condition, TResult result)
 		{
 			var rule = new Rule<T1,T2,T3,T4,T5,T6,TResult>(condition, result);
@@ -247,7 +297,17 @@ namespace RuleSet
         {
             var rule = rules.FirstOrDefault(r => r.Condition(t1, t2, t3, t4, t5, t6, t7));
             return rule != null ? rule.Result : defaultResult;
-        }
+		}
+
+		public IEnumerable<TResult> All(params object[] args)
+		{
+			return All(args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
+		}
+
+		public TResult First(params object[] args)
+		{
+			return First(args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
+		}
 
         internal void Add(Func<T1,T2,T3,T4,T5,T6,T7,bool> condition, TResult result)
         {
@@ -282,7 +342,17 @@ namespace RuleSet
         {
             var rule = rules.FirstOrDefault(r => r.Condition(t1, t2, t3, t4, t5, t6, t7, t8));
             return rule != null ? rule.Result : defaultResult;
-        }
+		}
+
+		public IEnumerable<TResult> All(params object[] args)
+		{
+			return All(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7]);
+		}
+
+		public TResult First(params object[] args)
+		{
+			return First(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7]);
+		}
 
         internal void Add(Func<T1,T2,T3,T4,T5,T6,T7,T8,bool> condition, TResult result)
         {
@@ -317,7 +387,17 @@ namespace RuleSet
         {
             var rule = rules.FirstOrDefault(r => r.Condition(t1, t2, t3, t4, t5, t6, t7, t8, t9));
             return rule != null ? rule.Result : defaultResult;
-        }
+		}
+
+		public IEnumerable<TResult> All(params object[] args)
+		{
+			return All(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8]);
+		}
+
+		public TResult First(params object[] args)
+		{
+			return First(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8]);
+		}
 
         internal void Add(Func<T1,T2,T3,T4,T5,T6,T7,T8,T9,bool> condition, TResult result)
         {
