@@ -53,16 +53,6 @@ namespace RuleSet.Tests
 			Assert.That(results, Contains.Item("even"));
 			Assert.That(results, Contains.Item("definitely even"));
 		}
-
-		[Test]
-		public void TestPassingGenericTypeToWhenInsteadOfFunc()
-		{
-			var ruleSet = new RuleSet<int,string>();
-
-			ruleSet.When(1).Then("one");
-
-			Assert.That(ruleSet.First(1), Is.EqualTo("one"));
-		}
 	}
 
 	[TestFixture]

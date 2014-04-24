@@ -61,10 +61,10 @@ more manageable approach.
 ```csharp
 var calculator = new RuleSet<Operation,Func<int,int,int>>(defaultResult: null);
 
-calculator.When(Operation.Add).Then((x,y) => x + y);
-calculator.When(Operation.Subtract).Then((x,y) => x - y);
-calculator.When(Operation.Multiply).Then((x,y) => x * y);
-calculator.When(Operation.Divide).Then((x,y) => x / y);
+calculator.When(o => o == Operation.Add).Then((x,y) => x + y);
+calculator.When(o => o == Operation.Subtract).Then((x,y) => x - y);
+calculator.When(o => o == Operation.Multiply).Then((x,y) => x * y);
+calculator.When(o => o == Operation.Divide).Then((x,y) => x / y);
 
 return calculator.First(Operation.Add)(1,2);   // returns 3
 ```
@@ -104,11 +104,6 @@ mathematical operation.
 The `When` method is called on a `RuleSet` to define the `Condition` for a given
 `Rule`. `When` method returns a builder object which lets us finish building
 a `Rule` by calling the `Then` method.
-
-If a simple equality check against each generic input type is all that is
-required, `When` accepts an instance of each generic input type `T1`, `T2` up to
-`TN`, and generates the required `Func<T1,T2,…,TN,bool>` method for you, using
-an equality comparison on each object.
 
 In the case of more advanced logic being required to evaluate the `Condition`
 being defined, your own `Func<T1,T2,…,TN,bool>` can be supplied, which allows

@@ -63,13 +63,6 @@ namespace RuleSet
 			return when;
 		}
 
-		public When<RuleSet<T1,T2,TResult>,T1,T2,TResult> When(T1 t1, T2 t2)
-		{
-			Func<T1,T2,bool> condition = (a,b) => a.Equals(t1) && b.Equals(t2);
-			var when = new When<RuleSet<T1,T2,TResult>,T1,T2,TResult>(this, condition);
-			return when;
-		}
-
 		public IEnumerable<TResult> All(T1 t1, T2 t2)
 		{
 			return rules.Where(r => r.Condition(t1, t2)).Select(r => r.Result);
@@ -101,13 +94,6 @@ namespace RuleSet
 
 		public When<RuleSet<T1,T2,T3,TResult>,T1,T2,T3,TResult> When(Func<T1,T2,T3,bool> condition)
 		{
-			var when = new When<RuleSet<T1,T2,T3,TResult>,T1,T2,T3,TResult>(this, condition);
-			return when;
-		}
-
-		public When<RuleSet<T1,T2,T3,TResult>,T1,T2,T3,TResult> When(T1 t1, T2 t2, T3 t3)
-		{
-			Func<T1,T2,T3,bool> condition = (a,b,c) => a.Equals(t1) && b.Equals(t2) && c.Equals(t3);
 			var when = new When<RuleSet<T1,T2,T3,TResult>,T1,T2,T3,TResult>(this, condition);
 			return when;
 		}
@@ -147,13 +133,6 @@ namespace RuleSet
 			return when;
 		}
 
-		public When<RuleSet<T1,T2,T3,T4,TResult>,T1,T2,T3,T4,TResult> When(T1 t1, T2 t2, T3 t3, T4 t4)
-		{
-			Func<T1,T2,T3,T4,bool> condition = (a,b,c,d) => a.Equals(t1) && b.Equals(t2) && c.Equals(t3) && d.Equals(t4);
-			var when = new When<RuleSet<T1,T2,T3,T4,TResult>,T1,T2,T3,T4,TResult>(this, condition);
-			return when;
-		}
-
 		public IEnumerable<TResult> All(T1 t1, T2 t2, T3 t3, T4 t4)
 		{
 			return rules.Where(r => r.Condition(t1, t2, t3, t4)).Select(r => r.Result);
@@ -185,13 +164,6 @@ namespace RuleSet
 
 		public When<RuleSet<T1,T2,T3,T4,T5,TResult>,T1,T2,T3,T4,T5,TResult> When(Func<T1,T2,T3,T4,T5,bool> condition)
 		{
-			var when = new When<RuleSet<T1,T2,T3,T4,T5,TResult>,T1,T2,T3,T4,T5,TResult>(this, condition);
-			return when;
-		}
-
-		public When<RuleSet<T1,T2,T3,T4,T5,TResult>,T1,T2,T3,T4,T5,TResult> When(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5)
-		{
-			Func<T1,T2,T3,T4,T5,bool> condition = (a,b,c,d,e) => a.Equals(t1) && b.Equals(t2) && c.Equals(t3) && d.Equals(t4) && e.Equals(t5);
 			var when = new When<RuleSet<T1,T2,T3,T4,T5,TResult>,T1,T2,T3,T4,T5,TResult>(this, condition);
 			return when;
 		}
@@ -231,13 +203,6 @@ namespace RuleSet
 			return when;
 		}
 
-		public When<RuleSet<T1,T2,T3,T4,T5,T6,TResult>,T1,T2,T3,T4,T5,T6,TResult> When(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6)
-		{
-			Func<T1,T2,T3,T4,T5,T6,bool> condition = (a,b,c,d,e,f) => a.Equals(t1) && b.Equals(t2) && c.Equals(t3) && d.Equals(t4) && e.Equals(t5) && f.Equals(t6);
-			var when = new When<RuleSet<T1,T2,T3,T4,T5,T6,TResult>,T1,T2,T3,T4,T5,T6,TResult>(this, condition);
-			return when;
-		}
-
 		public IEnumerable<TResult> All(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6)
 		{
 			return rules.Where(r => r.Condition(t1, t2, t3, t4, t5, t6)).Select(r => r.Result);
@@ -269,13 +234,6 @@ namespace RuleSet
 
         public When<RuleSet<T1,T2,T3,T4,T5,T6,T7,TResult>,T1,T2,T3,T4,T5,T6,T7,TResult> When(Func<T1,T2,T3,T4,T5,T6,T7,bool> condition)
         {
-            var when = new When<RuleSet<T1,T2,T3,T4,T5,T6,T7,TResult>,T1,T2,T3,T4,T5,T6,T7,TResult>(this, condition);
-            return when;
-        }
-
-        public When<RuleSet<T1,T2,T3,T4,T5,T6,T7,TResult>,T1,T2,T3,T4,T5,T6,T7,TResult> When(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7)
-        {
-            Func<T1,T2,T3,T4,T5,T6,T7,bool> condition = (a, b, c, d, e, f, g) => a.Equals(t1) && b.Equals(t2) && c.Equals(t3) && d.Equals(t4) && e.Equals(t5) && f.Equals(t6) && g.Equals(t7);;
             var when = new When<RuleSet<T1,T2,T3,T4,T5,T6,T7,TResult>,T1,T2,T3,T4,T5,T6,T7,TResult>(this, condition);
             return when;
         }
@@ -315,13 +273,6 @@ namespace RuleSet
             return when;
         }
 
-        public When<RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,TResult>,T1,T2,T3,T4,T5,T6,T7,T8,TResult> When(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8)
-        {
-            Func<T1,T2,T3,T4,T5,T6,T7,T8,bool> condition = (a, b, c, d, e, f, g, h) => a.Equals(t1) && b.Equals(t2) && c.Equals(t3) && d.Equals(t4) && e.Equals(t5) && f.Equals(t6) && g.Equals(t7) && h.Equals(t8);
-            var when = new When<RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,TResult>,T1,T2,T3,T4,T5,T6,T7,T8,TResult>(this, condition);
-            return when;
-        }
-
         public IEnumerable<TResult> All(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8)
         {
             return rules.Where(r => r.Condition(t1, t2, t3, t4, t5, t6, t7, t8)).Select(r => r.Result);
@@ -353,13 +304,6 @@ namespace RuleSet
 
         public When<RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,T9,TResult>,T1,T2,T3,T4,T5,T6,T7,T8,T9,TResult> When(Func<T1,T2,T3,T4,T5,T6,T7,T8,T9,bool> condition)
         {
-            var when = new When<RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,T9,TResult>,T1,T2,T3,T4,T5,T6,T7,T8,T9,TResult>(this, condition);
-            return when;
-        }
-
-        public When<RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,T9,TResult>,T1,T2,T3,T4,T5,T6,T7,T8,T9,TResult> When(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9)
-        {
-            Func<T1,T2,T3,T4,T5,T6,T7,T8,T9,bool> condition = (a, b, c, d, e, f, g, h, i) => a.Equals(t1) && b.Equals(t2) && c.Equals(t3) && d.Equals(t4) && e.Equals(t5) && f.Equals(t6) && g.Equals(t7) && h.Equals(t8) && i.Equals(t9);
             var when = new When<RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,T9,TResult>,T1,T2,T3,T4,T5,T6,T7,T8,T9,TResult>(this, condition);
             return when;
         }
