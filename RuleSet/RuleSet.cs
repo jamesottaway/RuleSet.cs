@@ -6,12 +6,12 @@ namespace RuleSet
 {
 	public class RuleSet<T1,TResult>
 	{
-		internal readonly IList<Rule<T1, TResult>> rules;
+		internal readonly IList<Rule<T1,TResult>> rules;
 		internal readonly TResult defaultResult;
 
 		public RuleSet(TResult defaultResult = default(TResult)) : base()
 		{
-			this.rules = new List<Rule<T1, TResult>>();
+			this.rules = new List<Rule<T1,TResult>>();
 			this.defaultResult = defaultResult;
 		}
 
@@ -48,12 +48,12 @@ namespace RuleSet
 
 	public class RuleSet<T1,T2,TResult>
 	{
-		internal readonly IList<Rule<T1, T2, TResult>> rules;
+		internal readonly IList<Rule<T1,T2,TResult>> rules;
 		internal readonly TResult defaultResult;
 
 		public RuleSet(TResult defaultResult = default(TResult)) : base()
 		{
-			this.rules = new List<Rule<T1, T2, TResult>>();
+			this.rules = new List<Rule<T1,T2,TResult>>();
 			this.defaultResult = defaultResult;
 		}
 
@@ -90,12 +90,12 @@ namespace RuleSet
 
 	public class RuleSet<T1,T2,T3,TResult>
 	{
-		internal readonly IList<Rule<T1, T2, T3, TResult>> rules;
+		internal readonly IList<Rule<T1,T2,T3,TResult>> rules;
 		internal readonly TResult defaultResult;
 
 		public RuleSet(TResult defaultResult = default(TResult)) : base()
 		{
-			this.rules = new List<Rule<T1, T2, T3, TResult>>();
+			this.rules = new List<Rule<T1,T2,T3,TResult>>();
 			this.defaultResult = defaultResult;
 		}
 
@@ -132,12 +132,12 @@ namespace RuleSet
 
 	public class RuleSet<T1,T2,T3,T4,TResult>
 	{
-		internal readonly IList<Rule<T1, T2, T3, T4, TResult>> rules;
+		internal readonly IList<Rule<T1,T2,T3,T4,TResult>> rules;
 		internal readonly TResult defaultResult;
 
 		public RuleSet(TResult defaultResult = default(TResult)) : base()
 		{
-			this.rules = new List<Rule<T1, T2, T3, T4, TResult>>();
+			this.rules = new List<Rule<T1,T2,T3,T4,TResult>>();
 			this.defaultResult = defaultResult;
 		}
 
@@ -174,12 +174,12 @@ namespace RuleSet
 
 	public class RuleSet<T1,T2,T3,T4,T5,TResult>
 	{
-		internal readonly IList<Rule<T1, T2, T3, T4, T5, TResult>> rules;
+		internal readonly IList<Rule<T1,T2,T3,T4,T5,TResult>> rules;
 		internal readonly TResult defaultResult;
 
 		public RuleSet(TResult defaultResult = default(TResult)) : base()
 		{
-			this.rules = new List<Rule<T1, T2, T3, T4, T5, TResult>>();
+			this.rules = new List<Rule<T1,T2,T3,T4,T5,TResult>>();
 			this.defaultResult = defaultResult;
 		}
 
@@ -216,12 +216,12 @@ namespace RuleSet
 
 	public class RuleSet<T1,T2,T3,T4,T5,T6,TResult>
 	{
-		internal readonly IList<Rule<T1, T2, T3, T4, T5, T6, TResult>> rules;
+		internal readonly IList<Rule<T1,T2,T3,T4,T5,T6,TResult>> rules;
 		internal readonly TResult defaultResult;
 
 		public RuleSet(TResult defaultResult = default(TResult)) : base()
 		{
-			this.rules = new List<Rule<T1, T2, T3, T4, T5, T6, TResult>>();
+			this.rules = new List<Rule<T1,T2,T3,T4,T5,T6,TResult>>();
 			this.defaultResult = defaultResult;
 		}
 
@@ -258,12 +258,12 @@ namespace RuleSet
 
     public class RuleSet<T1,T2,T3,T4,T5,T6,T7,TResult>
     {
-        internal readonly IList<Rule<T1, T2, T3, T4, T5, T6, T7, TResult>> rules;
+        internal readonly IList<Rule<T1,T2,T3,T4,T5,T6,T7,TResult>> rules;
         internal readonly TResult defaultResult;
 
         public RuleSet(TResult defaultResult = default(TResult)) : base()
         {
-            this.rules = new List<Rule<T1, T2, T3, T4, T5, T6, T7, TResult>>();
+            this.rules = new List<Rule<T1,T2,T3,T4,T5,T6,T7,TResult>>();
             this.defaultResult = defaultResult;
         }
 
@@ -300,12 +300,12 @@ namespace RuleSet
 
     public class RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,TResult>
     {
-        internal readonly IList<Rule<T1, T2, T3, T4, T5, T6, T7, T8, TResult>> rules;
+        internal readonly IList<Rule<T1,T2,T3,T4,T5,T6,T7,T8,TResult>> rules;
         internal readonly TResult defaultResult;
 
         public RuleSet(TResult defaultResult = default(TResult)) : base()
         {
-            this.rules = new List<Rule<T1, T2, T3, T4, T5, T6, T7, T8, TResult>>();
+            this.rules = new List<Rule<T1,T2,T3,T4,T5,T6,T7,T8,TResult>>();
             this.defaultResult = defaultResult;
         }
 
@@ -342,12 +342,12 @@ namespace RuleSet
 
     public class RuleSet<T1,T2,T3,T4,T5,T6,T7,T8,T9,TResult>
     {
-        internal readonly IList<Rule<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult>> rules;
+        internal readonly IList<Rule<T1,T2,T3,T4,T5,T6,T7,T8,T9,TResult>> rules;
         internal readonly TResult defaultResult;
 
         public RuleSet(TResult defaultResult = default(TResult)) : base()
         {
-            this.rules = new List<Rule<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult>>();
+            this.rules = new List<Rule<T1,T2,T3,T4,T5,T6,T7,T8,T9,TResult>>();
             this.defaultResult = defaultResult;
         }
 
@@ -382,4 +382,3 @@ namespace RuleSet
         }
     }
 }
-

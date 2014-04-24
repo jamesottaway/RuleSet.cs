@@ -7,8 +7,8 @@ namespace RuleSet.Tests
 	[TestFixture]
 	public class RuleSetTests
 	{
-		private Func<int, bool> even;
-		private Func<int, bool> odd;
+		private Func<int,bool> even;
+		private Func<int,bool> odd;
 
 		[SetUp]
 		public void SetUp()
@@ -20,7 +20,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestFirstReturnsFirstResultWhereTheConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, string>();
+			var ruleSet = new RuleSet<int,string>();
 
 			ruleSet.When(even).Then("even");
 			ruleSet.When(even).Then("definitely even");
@@ -31,7 +31,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestFirstReturnsDefaultResultWhereNoConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, string>("default");
+			var ruleSet = new RuleSet<int,string>("default");
 
 			ruleSet.When(odd).Then("odd");
 
@@ -41,7 +41,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestAllReturnsAllResultsWhereTheConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, string>();
+			var ruleSet = new RuleSet<int,string>();
 
 			ruleSet.When(odd).Then("odd");
 			ruleSet.When(even).Then("even");
@@ -57,7 +57,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestPassingGenericTypeToWhenInsteadOfFunc()
 		{
-			var ruleSet = new RuleSet<int, string>();
+			var ruleSet = new RuleSet<int,string>();
 
 			ruleSet.When(1).Then("one");
 
@@ -68,20 +68,20 @@ namespace RuleSet.Tests
 	[TestFixture]
 	public class RuleSetTestsWithTwoGenericInputTypes
 	{
-		private Func<object, object, bool> equal;
-		private Func<object, object, bool> notEqual;
+		private Func<object,object,bool> equal;
+		private Func<object,object,bool> notEqual;
 
 		[SetUp]
 		public void SetUp()
 		{
-			equal = (a, b) => a == b;
-			notEqual = (a, b) => a != b;
+			equal = (a,b) => a == b;
+			notEqual = (a,b) => a != b;
 		}
 
 		[Test]
 		public void TestFirstReturnsFirstResultWhereTheConditionIsMet()
 		{
-			var ruleSet = new RuleSet<object, object, string>();
+			var ruleSet = new RuleSet<object,object,string>();
 
 			ruleSet.When(equal).Then("equal");
 			ruleSet.When(equal).Then("definitely equal");
@@ -92,7 +92,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestFirstReturnsDefaultResultWhereNoConditionIsMet()
 		{
-			var ruleSet = new RuleSet<object, object, string>("default");
+			var ruleSet = new RuleSet<object,object,string>("default");
 
 			ruleSet.When(equal).Then("equal");
 
@@ -102,7 +102,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestAllReturnsAllResultsWhereTheConditionIsMet()
 		{
-			var ruleSet = new RuleSet<object, object, string>();
+			var ruleSet = new RuleSet<object,object,string>();
 
 			ruleSet.When(notEqual).Then("not equal");
 			ruleSet.When(equal).Then("equal");
@@ -119,20 +119,20 @@ namespace RuleSet.Tests
 	[TestFixture]
 	public class RuleSetTestsWithThreeGenericInputTypes
 	{
-		private Func<int, int, int, bool> asc;
-		private Func<int, int, int, bool> desc;
+		private Func<int,int,int,bool> asc;
+		private Func<int,int,int,bool> desc;
 
 		[SetUp]
 		public void SetUp()
 		{
-			asc = (a, b, c) => c > b && b > a;
-			desc = (a, b, c) => a > b && b > c;
+			asc = (a,b,c) => c > b && b > a;
+			desc = (a,b,c) => a > b && b > c;
 		}
 
 		[Test]
 		public void TestFirstReturnsFirstResultWhereTheConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, int, int, string>();
+			var ruleSet = new RuleSet<int,int,int,string>();
 
 			ruleSet.When(asc).Then("ascending");
 			ruleSet.When(asc).Then("definitely ascending");
@@ -143,7 +143,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestFirstReturnsDefaultResultWhereNoConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, int, int, string>("default");
+			var ruleSet = new RuleSet<int,int,int,string>("default");
 
 			ruleSet.When(asc).Then("ascending");
 
@@ -153,7 +153,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestAllReturnsAllResultsWhereTheConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, int, int, string>();
+			var ruleSet = new RuleSet<int,int,int,string>();
 
 			ruleSet.When(desc).Then("descending");
 			ruleSet.When(asc).Then("ascending");
@@ -170,20 +170,20 @@ namespace RuleSet.Tests
 	[TestFixture]
 	public class RuleSetTestsWithFourGenericInputTypes
 	{
-		private Func<int, int, int, int, bool> asc;
-		private Func<int, int, int, int, bool> desc;
+		private Func<int,int,int,int,bool> asc;
+		private Func<int,int,int,int,bool> desc;
 
 		[SetUp]
 		public void SetUp()
 		{
-			asc = (a, b, c, d) => d > c && c > b && b > a;
-			desc = (a, b, c, d) => a > b && b > c && c > d;
+			asc = (a,b,c,d) => d > c && c > b && b > a;
+			desc = (a,b,c,d) => a > b && b > c && c > d;
 		}
 
 		[Test]
 		public void TestFirstReturnsFirstResultWhereTheConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, int, int, int, string>();
+			var ruleSet = new RuleSet<int,int,int,int,string>();
 
 			ruleSet.When(asc).Then("ascending");
 			ruleSet.When(asc).Then("definitely ascending");
@@ -194,7 +194,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestFirstReturnsDefaultResultWhereNoConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, int, int, int, string>("default");
+			var ruleSet = new RuleSet<int,int,int,int,string>("default");
 
 			ruleSet.When(asc).Then("ascending");
 
@@ -204,7 +204,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestAllReturnsAllResultsWhereTheConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, int, int, int, string>();
+			var ruleSet = new RuleSet<int,int,int,int,string>();
 
 			ruleSet.When(desc).Then("descending");
 			ruleSet.When(asc).Then("ascending");
@@ -221,20 +221,20 @@ namespace RuleSet.Tests
 	[TestFixture]
 	public class RuleSetTestsWithFiveGenericInputTypes
 	{
-		private Func<int, int, int, int, int, bool> asc;
-		private Func<int, int, int, int, int, bool> desc;
+		private Func<int,int,int,int,int,bool> asc;
+		private Func<int,int,int,int,int,bool> desc;
 
 		[SetUp]
 		public void SetUp()
 		{
-			asc = (a, b, c, d, e) => e > d && d > c && c > b && b > a;
-			desc = (a, b, c, d, e) => a > b && b > c && c > d && d > e;
+			asc = (a,b,c,d,e) => e > d && d > c && c > b && b > a;
+			desc = (a,b,c,d,e) => a > b && b > c && c > d && d > e;
 		}
 
 		[Test]
 		public void TestFirstReturnsFirstResultWhereTheConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, int, int, int, int, string>();
+			var ruleSet = new RuleSet<int,int,int,int,int,string>();
 
 			ruleSet.When(asc).Then("ascending");
 			ruleSet.When(asc).Then("definitely ascending");
@@ -245,7 +245,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestFirstReturnsDefaultResultWhereNoConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, int, int, int, int, string>("default");
+			var ruleSet = new RuleSet<int,int,int,int,int,string>("default");
 
 			ruleSet.When(asc).Then("ascending");
 
@@ -255,7 +255,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestAllReturnsAllResultsWhereTheConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, int, int, int, int, string>();
+			var ruleSet = new RuleSet<int,int,int,int,int,string>();
 
 			ruleSet.When(desc).Then("descending");
 			ruleSet.When(asc).Then("ascending");
@@ -272,20 +272,20 @@ namespace RuleSet.Tests
 	[TestFixture]
 	public class RuleSetTestsWithSixGenericInputTypes
 	{
-		private Func<int, int, int, int, int, int, bool> asc;
-		private Func<int, int, int, int, int, int, bool> desc;
+		private Func<int,int,int,int,int,int,bool> asc;
+		private Func<int,int,int,int,int,int,bool> desc;
 
 		[SetUp]
 		public void SetUp()
 		{
-			asc = (a, b, c, d, e, f) => f > e && e > d && d > c && c > b && b > a;
-			desc = (a, b, c, d, e, f) => a > b && b > c && c > d && d > e && e > f;
+			asc = (a,b,c,d,e,f) => f > e && e > d && d > c && c > b && b > a;
+			desc = (a,b,c,d,e,f) => a > b && b > c && c > d && d > e && e > f;
 		}
 
 		[Test]
 		public void TestFirstReturnsFirstResultWhereTheConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, int, int, int, int, int, string>();
+			var ruleSet = new RuleSet<int,int,int,int,int,int,string>();
 
 			ruleSet.When(asc).Then("ascending");
 			ruleSet.When(asc).Then("definitely ascending");
@@ -296,7 +296,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestFirstReturnsDefaultResultWhereNoConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, int, int, int, int, int, string>("default");
+			var ruleSet = new RuleSet<int,int,int,int,int,int,string>("default");
 
 			ruleSet.When(asc).Then("ascending");
 
@@ -306,7 +306,7 @@ namespace RuleSet.Tests
 		[Test]
 		public void TestAllReturnsAllResultsWhereTheConditionIsMet()
 		{
-			var ruleSet = new RuleSet<int, int, int, int, int, int, string>();
+			var ruleSet = new RuleSet<int,int,int,int,int,int,string>();
 
 			ruleSet.When(desc).Then("descending");
 			ruleSet.When(asc).Then("ascending");
@@ -323,20 +323,20 @@ namespace RuleSet.Tests
     [TestFixture]
     public class RuleSetTestsWithSevenGenericInputTypes
     {
-        private Func<int, int, int, int, int, int, int, bool> asc;
-        private Func<int, int, int, int, int, int, int, bool> desc;
+        private Func<int,int,int,int,int,int,int,bool> asc;
+        private Func<int,int,int,int,int,int,int,bool> desc;
 
         [SetUp]
         public void SetUp()
         {
-            asc = (a, b, c, d, e, f, g) => g > f && f > e && e > d && d > c && c > b && b > a;
-            desc = (a, b, c, d, e, f, g) => a > b && b > c && c > d && d > e && e > f && f > g;
+            asc = (a,b,c,d,e,f,g) => g > f && f > e && e > d && d > c && c > b && b > a;
+            desc = (a,b,c,d,e,f,g) => a > b && b > c && c > d && d > e && e > f && f > g;
         }
 
         [Test]
         public void TestFirstReturnsFirstResultWhereTheConditionIsMet()
         {
-            var ruleSet = new RuleSet<int, int, int, int, int, int, int, string>();
+            var ruleSet = new RuleSet<int,int,int,int,int,int,int,string>();
 
             ruleSet.When(asc).Then("ascending");
             ruleSet.When(asc).Then("definitely ascending");
@@ -347,7 +347,7 @@ namespace RuleSet.Tests
         [Test]
         public void TestFirstReturnsDefaultResultWhereNoConditionIsMet()
         {
-            var ruleSet = new RuleSet<int, int, int, int, int, int, int, string>("default");
+            var ruleSet = new RuleSet<int,int,int,int,int,int,int,string>("default");
 
             ruleSet.When(asc).Then("ascending");
 
@@ -357,7 +357,7 @@ namespace RuleSet.Tests
         [Test]
         public void TestAllReturnsAllResultsWhereTheConditionIsMet()
         {
-            var ruleSet = new RuleSet<int, int, int, int, int, int, int, string>();
+            var ruleSet = new RuleSet<int,int,int,int,int,int,int,string>();
 
             ruleSet.When(desc).Then("descending");
             ruleSet.When(asc).Then("ascending");
@@ -374,20 +374,20 @@ namespace RuleSet.Tests
     [TestFixture]
     public class RuleSetTestsWithEightGenericInputTypes
     {
-        private Func<int, int, int, int, int, int, int, int, bool> asc;
-        private Func<int, int, int, int, int, int, int, int, bool> desc;
+        private Func<int,int,int,int,int,int,int,int,bool> asc;
+        private Func<int,int,int,int,int,int,int,int,bool> desc;
 
         [SetUp]
         public void SetUp()
         {
-            asc = (a, b, c, d, e, f, g, h) => h > g && g > f && f > e && e > d && d > c && c > b && b > a;
-            desc = (a, b, c, d, e, f, g, h) => a > b && b > c && c > d && d > e && e > f && f > g && g > h;
+            asc = (a,b,c,d,e,f,g,h) => h > g && g > f && f > e && e > d && d > c && c > b && b > a;
+            desc = (a,b,c,d,e,f,g,h) => a > b && b > c && c > d && d > e && e > f && f > g && g > h;
         }
 
         [Test]
         public void TestFirstReturnsFirstResultWhereTheConditionIsMet()
         {
-            var ruleSet = new RuleSet<int, int, int, int, int, int, int, int, string>();
+            var ruleSet = new RuleSet<int,int,int,int,int,int,int,int,string>();
 
             ruleSet.When(asc).Then("ascending");
             ruleSet.When(asc).Then("definitely ascending");
@@ -398,7 +398,7 @@ namespace RuleSet.Tests
         [Test]
         public void TestFirstReturnsDefaultResultWhereNoConditionIsMet()
         {
-            var ruleSet = new RuleSet<int, int, int, int, int, int, int, int, string>("default");
+            var ruleSet = new RuleSet<int,int,int,int,int,int,int,int,string>("default");
 
             ruleSet.When(asc).Then("ascending");
 
@@ -408,7 +408,7 @@ namespace RuleSet.Tests
         [Test]
         public void TestAllReturnsAllResultsWhereTheConditionIsMet()
         {
-            var ruleSet = new RuleSet<int, int, int, int, int, int, int, int, string>();
+            var ruleSet = new RuleSet<int,int,int,int,int,int,int,int,string>();
 
             ruleSet.When(desc).Then("descending");
             ruleSet.When(asc).Then("ascending");
@@ -425,20 +425,20 @@ namespace RuleSet.Tests
     [TestFixture]
     public class RuleSetTestsWithNineGenericInputTypes
     {
-        private Func<int, int, int, int, int, int, int, int, int, bool> asc;
-        private Func<int, int, int, int, int, int, int, int, int, bool> desc;
+        private Func<int,int,int,int,int,int,int,int,int,bool> asc;
+        private Func<int,int,int,int,int,int,int,int,int,bool> desc;
 
         [SetUp]
         public void SetUp()
         {
-            asc = (a, b, c, d, e, f, g, h, i) => i > h && h > g && g > f && f > e && e > d && d > c && c > b && b > a;
-            desc = (a, b, c, d, e, f, g, h, i) => a > b && b > c && c > d && d > e && e > f && f > g && g > h && h > i;
+            asc = (a,b,c,d,e,f,g,h,i) => i > h && h > g && g > f && f > e && e > d && d > c && c > b && b > a;
+            desc = (a,b,c,d,e,f,g,h,i) => a > b && b > c && c > d && d > e && e > f && f > g && g > h && h > i;
         }
 
         [Test]
         public void TestFirstReturnsFirstResultWhereTheConditionIsMet()
         {
-            var ruleSet = new RuleSet<int, int, int, int, int, int, int, int, int, string>();
+            var ruleSet = new RuleSet<int,int,int,int,int,int,int,int,int,string>();
 
             ruleSet.When(asc).Then("ascending");
             ruleSet.When(asc).Then("definitely ascending");
@@ -449,7 +449,7 @@ namespace RuleSet.Tests
         [Test]
         public void TestFirstReturnsDefaultResultWhereNoConditionIsMet()
         {
-            var ruleSet = new RuleSet<int, int, int, int, int, int, int, int, int, string>("default");
+            var ruleSet = new RuleSet<int,int,int,int,int,int,int,int,int,string>("default");
 
             ruleSet.When(asc).Then("ascending");
 
@@ -459,13 +459,13 @@ namespace RuleSet.Tests
         [Test]
         public void TestAllReturnsAllResultsWhereTheConditionIsMet()
         {
-            var ruleSet = new RuleSet<int, int, int, int, int, int, int, int, int, string>();
+            var ruleSet = new RuleSet<int,int,int,int,int,int,int,int,int,string>();
 
             ruleSet.When(desc).Then("descending");
             ruleSet.When(asc).Then("ascending");
             ruleSet.When(asc).Then("definitely ascending");
 
-            var results = ruleSet.All(1,2,3,4,5,6,7,8, 9);
+            var results = ruleSet.All(1,2,3,4,5,6,7,8,9);
 
             Assert.That(results.Count(), Is.EqualTo(2));
             Assert.That(results, Contains.Item("ascending"));
@@ -473,4 +473,3 @@ namespace RuleSet.Tests
         }
     }
 }
-
